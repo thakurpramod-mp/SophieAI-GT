@@ -1,0 +1,392 @@
+/* Sophie Enterprise AI Platform – same design system as React app
+   Deep navy/slate + electric teal, Space Grotesk + Inter, glassmorphism */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --background: 222 47% 6%;
+  --foreground: 210 40% 98%;
+  --card: 222 47% 8%;
+  --card-foreground: 210 40% 98%;
+  --primary: 174 72% 50%;
+  --primary-foreground: 222 47% 6%;
+  --secondary: 217 33% 17%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217 33% 14%;
+  --muted-foreground: 215 20% 55%;
+  --accent: 187 75% 45%;
+  --border: 217 33% 18%;
+  --ring: 174 72% 50%;
+  --radius: 0.75rem;
+  --gradient-primary: linear-gradient(135deg, hsl(174 72% 50%) 0%, hsl(187 75% 45%) 100%);
+  --gradient-glow: linear-gradient(135deg, hsl(174 80% 60% / 0.2) 0%, hsl(187 75% 45% / 0.1) 100%);
+  --shadow-glow: 0 0 40px hsl(174 72% 50% / 0.15);
+  --shadow-glow-lg: 0 0 60px hsl(174 72% 50% / 0.25);
+  --shadow-card: 0 8px 32px hsl(222 47% 4% / 0.5);
+  --shadow-elevated: 0 20px 60px hsl(222 47% 4% / 0.6);
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* Navbar: same as React – primary gradient logo, shadow-glow */
+.bg-primary-gradient {
+  background: var(--gradient-primary);
+}
+
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.shadow-glow-lg {
+  box-shadow: var(--shadow-glow-lg);
+}
+
+.font-display {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+
+/* Glass card – same as React index.css */
+.glass-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid hsl(var(--border) / 0.5);
+  background: linear-gradient(145deg, hsl(var(--card) / 0.8) 0%, hsl(var(--card) / 0.4) 100%);
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-card);
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s;
+  background: var(--gradient-glow);
+}
+
+.glass-card:hover::before {
+  opacity: 1;
+}
+
+/* Gradient text – same as React */
+.gradient-text {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-image: var(--gradient-primary);
+}
+
+/* Grid pattern – same as React (border color) */
+.grid-pattern {
+  background-image:
+    linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Dot pattern – CapabilitiesSection background */
+.dot-pattern {
+  background-image: radial-gradient(hsl(var(--muted-foreground) / 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Section padding – same as React */
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* Platform service card hover */
+.shadow-elevated {
+  box-shadow: var(--shadow-elevated);
+}
+
+.platform-card {
+  border: 1px solid hsl(var(--border) / 0.5);
+  background: hsl(var(--card));
+  border-radius: 1rem;
+  transition: border-color 0.5s, box-shadow 0.5s;
+}
+
+.platform-card:hover {
+  border-color: hsl(var(--primary) / 0.5);
+  box-shadow: var(--shadow-elevated);
+}
+
+.gradient-glow-primary-accent {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+}
+
+.gradient-glow-accent-primary {
+  background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--primary)) 100%);
+}
+
+/* Capability card icon hover */
+.capability-icon-wrap {
+  background: hsl(var(--primary) / 0.1);
+  color: hsl(var(--primary));
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.capability-card:hover .capability-icon-wrap {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  box-shadow: var(--shadow-glow);
+}
+
+/* Section badge (Platform + Capabilities) */
+.section-badge {
+  border: 1px solid hsl(var(--primary) / 0.3);
+  background: hsl(var(--primary) / 0.1);
+  color: hsl(var(--primary));
+}
+
+/* Platform section background (secondary tint) */
+.bg-secondary\/20 {
+  background-color: hsl(var(--secondary) / 0.2);
+}
+
+/* Use case item card – hover border and background */
+.use-case-item {
+  background-color: hsl(var(--card) / 0.5);
+  border-color: hsl(var(--border) / 0.5);
+}
+
+.use-case-item:hover {
+  border-color: hsl(var(--primary) / 0.3);
+  background-color: hsl(var(--card));
+}
+
+/* Benefit card glow circle */
+.benefit-card-glow {
+  background-color: hsl(var(--primary) / 0.05);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.benefit-card:hover .benefit-card-glow {
+  opacity: 1;
+}
+
+/* CTA section glow orbs */
+.cta-glow-left {
+  background-color: hsl(var(--primary) / 0.1);
+}
+
+.cta-glow-right {
+  background-color: hsl(var(--accent) / 0.1);
+}
+
+/* Footer */
+.footer-bg {
+  background-color: hsl(var(--card) / 0.3);
+}
+
+/* Stat highlight – same as React */
+.stat-highlight {
+  font-size: 2.25rem;
+  font-weight: 700;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (min-width: 768px) {
+  .stat-highlight {
+    font-size: 3rem;
+  }
+}
+
+/* Hero badge glow */
+.hero-badge {
+  border: 1px solid hsl(var(--primary) / 0.3);
+  background: hsl(var(--primary) / 0.1);
+  color: hsl(var(--primary));
+  box-shadow: var(--shadow-glow);
+}
+
+/* Button styles matching React (ghost + default) */
+.btn-ghost {
+  color: hsl(var(--muted-foreground));
+  background: transparent;
+}
+
+.btn-ghost:hover {
+  background: hsl(var(--secondary));
+  color: hsl(var(--foreground));
+}
+
+.btn-primary {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:hover {
+  filter: brightness(0.9);
+  box-shadow: var(--shadow-glow-lg);
+}
+
+.btn-outline {
+  border: 1px solid hsl(var(--border));
+  background: transparent;
+  color: hsl(var(--foreground));
+}
+
+.btn-outline:hover {
+  background: hsl(var(--secondary));
+  border-color: hsl(var(--primary) / 0.5);
+}
+
+/* CTA hero buttons – same as React button variants */
+.btn-hero {
+  background: var(--gradient-primary);
+  color: hsl(var(--primary-foreground));
+  box-shadow: var(--shadow-glow);
+  transition: all 0.3s;
+}
+
+.btn-hero:hover {
+  box-shadow: var(--shadow-glow-lg);
+  transform: scale(1.05);
+}
+
+.btn-hero:active {
+  transform: scale(1);
+}
+
+.btn-hero-outline {
+  border: 2px solid hsl(var(--primary) / 0.6);
+  background: transparent;
+  color: hsl(var(--primary));
+  box-shadow: 0 0 40px hsl(var(--primary) / 0.08);
+  transition: all 0.3s;
+}
+
+.btn-hero-outline:hover {
+  background: hsl(var(--primary) / 0.1);
+  border-color: hsl(var(--primary));
+}
+
+/* Navbar and mobile menu backgrounds (match React opacity) */
+.nav-bg {
+  background-color: hsl(var(--background) / 0.8);
+  backdrop-filter: blur(24px);
+}
+
+.mobile-menu-bg {
+  background-color: hsl(var(--background) / 0.95);
+  backdrop-filter: blur(24px);
+}
+
+.border-border-half {
+  border-color: hsl(var(--border) / 0.5);
+}
+
+/* Hero overlay and bottom fade – match React */
+.hero-overlay {
+  background: linear-gradient(to bottom,
+      hsl(var(--background) / 0.6),
+      hsl(var(--background) / 0.8),
+      hsl(var(--background)));
+}
+
+.hero-bottom-fade {
+  background: linear-gradient(to top, hsl(var(--background)), transparent);
+}
+
+/* Animations – same easing as React (easeOut) */
+.animate-fade-up {
+  animation: fadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Section scroll-into-view (Platform, Capabilities) */
+.section-animate {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-animate.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Container max-width to match React (2xl: 1400px) */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
